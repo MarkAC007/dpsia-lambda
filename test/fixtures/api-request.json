@@ -1,0 +1,10 @@
+{
+  "vendorName": "JumpCloud, Inc.",
+  "vendorDescription": "Identity & Access Management platform providing unified directory, SSO/MFA, and device management",
+  "clientName": "Company, LLC",
+  "assessmentType": "annual-review",
+  "servicesUsed": "Directory-as-a-Service, MDM, SSO/MFA",
+  "dataRole": "Processor",
+  "supplierFormContent": null,
+  "additionalContext": "Contract renewal May 2026, $6,480/yr annual budget"
+}

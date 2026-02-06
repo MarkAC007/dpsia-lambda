@@ -1,0 +1,32 @@
+{
+  "name": "dpsia-lambda",
+  "version": "1.0.0",
+  "description": "DPSIA (Data Protection & Security Impact Assessment) Lambda service",
+  "type": "module",
+  "scripts": {
+    "build": "esbuild src/handler.ts --bundle --platform=node --target=node20 --outfile=dist/handler.js --format=cjs --external:@aws-sdk",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "cdk:deploy": "cd cdk && npx cdk deploy",
+    "cdk:synth": "cd cdk && npx cdk synth",
+    "cdk:diff": "cd cdk && npx cdk diff",
+    "assess": "npx tsx scripts/assess.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "@aws-sdk/client-lambda": "^3.984.0",
+    "@aws-sdk/client-secrets-manager": "^3.750.0",
+    "docx": "^9.2.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.147",
+    "@types/node": "^22.12.0",
+    "aws-cdk-lib": "^2.178.0",
+    "constructs": "^10.4.2",
+    "esbuild": "^0.25.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}
