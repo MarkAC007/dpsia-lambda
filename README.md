@@ -1,5 +1,11 @@
 # DPSIA Lambda
 
+[![CI](https://github.com/MarkAC007/dpsia-lambda/actions/workflows/ci.yml/badge.svg)](https://github.com/MarkAC007/dpsia-lambda/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js](https://img.shields.io/badge/Node.js-20-green.svg)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue.svg)](https://www.typescriptlang.org/)
+[![AWS Lambda](https://img.shields.io/badge/AWS-Lambda-orange.svg)](https://aws.amazon.com/lambda/)
+
 <p align="center">
   <img src="docs/dpsia-header.png" alt="DPSIA Lambda — Multi-provider AI security assessment" width="800">
 </p>
