@@ -25,15 +25,13 @@ jobs:
 
       - name: Run Semgrep
         run: |
-          semgrep ci --sarif --output=semgrep.sarif
-        env:
-          SEMGREP_RULES: >-
-            p/default
-            p/security-audit
-            p/secrets
-            p/typescript
-            p/nodejs
-            p/owasp-top-ten
+          semgrep scan --config=auto --sarif --output=semgrep.sarif \
+            --config "p/default" \
+            --config "p/security-audit" \
+            --config "p/secrets" \
+            --config "p/typescript" \
+            --config "p/nodejs" \
+            --config "p/owasp-top-ten"
 
       - name: Upload SARIF results
         uses: github/codeql-action/upload-sarif@v3
