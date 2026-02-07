@@ -148,5 +148,6 @@ export interface AssessmentOutput {
   reportFilename: string;
   researchSources: string[];
   processingTimeMs: number;
+  reportJson?: DPSIAReport;
   error?: string;
 }

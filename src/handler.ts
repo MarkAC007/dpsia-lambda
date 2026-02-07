@@ -73,6 +73,7 @@ export async function handler(event: APIGatewayProxyEvent): Promise<APIGatewayPr
       reportFilename,
       researchSources: research.allSources,
       processingTimeMs: Date.now() - start,
+      reportJson: report,
     };
 
     console.log(`[DPSIA] Complete: ${reportFilename} in ${output.processingTimeMs}ms`);

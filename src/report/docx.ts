@@ -31,7 +31,7 @@ function heading(text: string, level: typeof HeadingLevel[keyof typeof HeadingLe
 
 function para(text: string, bold = false): Paragraph {
   return new Paragraph({
-    children: [new TextRun({ text, bold })],
+    children: [new TextRun({ text: text ?? '', bold })],
     spacing: { after: 80 },
   });
 }
