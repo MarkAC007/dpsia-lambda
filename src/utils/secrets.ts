@@ -12,8 +12,11 @@ let cacheExpiry = 0;
 const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
 
 /**
- * Fetch DPSIA secrets from AWS Secrets Manager with caching.
- * Falls back to environment variables for local development.
+ * Fetch DPSIA secrets from environment variables or AWS Secrets Manager.
+ *
+ * When SECRETS_BACKEND=env (Azure Container App deployment), reads exclusively
+ * from environment variables and never touches AWS Secrets Manager.
+ * Otherwise falls back to the original AWS Secrets Manager path (Lambda deployment).
  */
 export async function getSecrets(): Promise<DPSIASecrets> {
   // Check cache
@@ -21,7 +24,7 @@ export async function getSecrets(): Promise<DPSIASecrets> {
     return cached;
   }
 
-  // Try environment variables first (local dev)
+  // Try environment variables first (Azure Container App, local dev)
   const fromEnv = getFromEnv();
   if (fromEnv) {
     cached = fromEnv;
@@ -29,7 +32,15 @@ export async function getSecrets(): Promise<DPSIASecrets> {
     return cached;
   }
 
-  // Fetch from Secrets Manager
+  // If SECRETS_BACKEND=env, don't fall through to AWS — fail with a clear message
+  if (process.env.SECRETS_BACKEND === 'env') {
+    throw new Error(
+      'SECRETS_BACKEND=env but required environment variables are missing. ' +
+      'Set ANTHROPIC_API_KEY, PERPLEXITY_API_KEY, GOOGLE_API_KEY, and XAI_API_KEY.'
+    );
+  }
+
+  // Fetch from AWS Secrets Manager (Lambda deployment path)
   const secretName = process.env.SECRETS_NAME ?? 'dpsia-lambda/config';
   const region = process.env.AWS_REGION ?? 'eu-west-1';
 
