@@ -15,4 +15,6 @@ ENV SECRETS_BACKEND=env
 
 EXPOSE 3000
 
+USER node
+
 CMD ["node", "server.js"]
