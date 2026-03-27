@@ -7,7 +7,7 @@ COPY package.json package-lock.json ./
 RUN npm ci --omit=dev
 
 # Copy bundled server
-COPY dist/server.js ./
+COPY dist/server.cjs ./
 
 ENV NODE_ENV=production
 ENV PORT=3000
@@ -17,4 +17,4 @@ EXPOSE 3000
 
 USER node
 
-CMD ["node", "server.js"]
+CMD ["node", "server.cjs"]
